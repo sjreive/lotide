@@ -18,19 +18,34 @@ const eqArrays = function(arr1, arr2) {
 };
 
 
-const eqObjects = function(object1, object2) {
+const eqObjects = function(object1, object2) { 
+
+  console.log(object1)
   if (Object.keys(object1).length !== Object.keys(object2).length) {
     return false;
   }
-  for (let key of Object.keys(object1)) {
-    if (Array.isArray(object1[key]) && Array.isArray(object2[key])) {
-      return eqArrays(object1[key], object2[key]);
-    }
-    if (object1[key] !== object2[key]) {
-      return false;
-    }
+
+  if (Object.keys(object1).length === 0) {
+    return true;
   }
-  return true;
+
+
+  let currentKey = Object.keys(object1)[0];
+  let obj1 = object1[currentKey];
+  let obj2 = object2[currentKey];
+  delete object1[currentKey];
+  delete object2[currentKey];
+
+  if (Array.isArray(object1[currentKey]) && Array.isArray(object2[currentKey])) {
+    return eqArrays(object1[currentKey], object2[currentKey]) && eqObjects(object1, object2);
+  }
+
+  if (typeof obj1 === 'object' && typeof obj2 === 'object') {
+    return eqObjects(obj1, obj2) && eqObjects(object1, object2);
+  } else {
+    return (obj1 === obj2) && eqObjects(object1, object2);
+  }
+
 };
 
 
@@ -52,3 +67,16 @@ const cd2 = { c: "1", d: ["2", 3, 4] };
 
 assertEqual(eqObjects(cd, dc), true);
 assertEqual(eqObjects(cd, cd2), false);
+
+//Test Cases for Objects containing other objects
+
+const ef = { a: {z: 1}, b: 2};
+const fe = {a : {y: 0, z:1}, b: 2};
+const ef2 = {b: 2, a: {z: 1}};
+const gh = {a: {b: {c: 3}, z: {y: {x: 24, w: 23}} }};
+const hg = {a: 1, b: {c: 3, d: 4}, e: {f: 6}};
+const hg2 = {e: {f: 6}, a: 1, b: {c: 3, d: 4}};
+assertEqual(eqObjects(ef, ef2), true);
+assertEqual(eqObjects(ef, ef2), true);
+assertEqual(eqObjects(gh, hg), false);
+assertEqual(eqObjects(hg, hg2), true);
