@@ -1,4 +1,3 @@
-
 const middle = function(array) {
   let length = array.length;
   let middleArray = [];

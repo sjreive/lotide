@@ -4,19 +4,19 @@ const assertArraysEqual = require("../assertArraysEqual")
 
 describe('#middle', () => {
   it ("returns [2,3] for [1,2,3,4]", () => {
-    assert.strictEqual(assertArraysEqual(middle([1,2,3,4]),[2,3], true));
+    assert.deepEqual(middle([1,2,3,4]),[2,3]);
   });
 
   it ("returns [2] for [4,2,3]", () => {
-    assert.strictEqual(assertArraysEqual(middle([4,2,3]),[2], true));
+    assert.deepEqual(middle([4,2,3]),[2]);
   });
 
   it ("returns [] for [1,2]", () => {
-    assert.strictEqual(assertArraysEqual(middle([1,2]),[], true));
+    assert.deepEqual(middle([1,2]),[]);
   });
 
   it ("returns [] for [\"Hello\"]", () => {
-    assert.strictEqual(assertArraysEqual(middle(["Hello"]),[], true));
+    assert.deepEqual(middle(["Hello"]),[]);
   });
 
 });
