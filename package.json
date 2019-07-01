@@ -1,5 +1,5 @@
 {
-  "name": "lotide",
+  "name": "@sjreive/lotide",
   "version": "1.0.0",
   "main": "main.js",
   "directories": {
@@ -12,13 +12,13 @@
     "type": "git",
     "url": "git+https://github.com/sjreive/lotide.git"
   },
-  "author": "",
+  "author": "Sarah Reive",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/sjreive/lotide/issues"
   },
   "homepage": "https://github.com/sjreive/lotide#readme",
-  "description": "",
+  "description": "Lotide is a library of functions",
   "devDependencies": {
     "chai": "^4.2.0",
     "mocha": "^6.1.4"
