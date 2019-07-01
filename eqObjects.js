@@ -18,9 +18,7 @@ const eqArrays = function(arr1, arr2) {
 };
 
 
-const eqObjects = function(object1, object2) { 
-
-  console.log(object1)
+const eqObjects = function(object1, object2) {
   if (Object.keys(object1).length !== Object.keys(object2).length) {
     return false;
   }
@@ -77,6 +75,6 @@ const gh = {a: {b: {c: 3}, z: {y: {x: 24, w: 23}} }};
 const hg = {a: 1, b: {c: 3, d: 4}, e: {f: 6}};
 const hg2 = {e: {f: 6}, a: 1, b: {c: 3, d: 4}};
 assertEqual(eqObjects(ef, ef2), true);
-assertEqual(eqObjects(ef, ef2), true);
+assertEqual(eqObjects(fe, ef2), false);
 assertEqual(eqObjects(gh, hg), false);
 assertEqual(eqObjects(hg, hg2), true);
